@@ -122,7 +122,8 @@ or
 ### 3.16. Navigate to your directory in a file explorer (Windows Key + E):
 
 	\\wsl$\Ubuntu-20.04\home\<username>\qmk_firmware
->	The <username> field should be the ubuntu username you defined.
+>	The username field should be the ubuntu username you defined.
+
 ![](https://github.com/CanUnesi/QMK-on-K6/raw/main/image3.jpg)
 ### 3.17. Locate and copy the .bin file
 Depending on your layout, copy "keychron_k6_ansi.bin" or "keychron_k6_iso.bin" file to a convenient place such as your desktop.
@@ -261,7 +262,7 @@ Replace with:
 		new_led_state[corrected_index].g = g;
 		new_led_state[corrected_index].b = b;
 	}
-Open the following file in your qmk_firmware directory:
+Open the following file in your qmk_firmware directory depending on your layout (ansi/iso):
 
 	keyboards/keychron/k6/keymaps/ansi/keymap.c
 Add the following lines after the keymap array:
