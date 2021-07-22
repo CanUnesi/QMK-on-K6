@@ -212,7 +212,7 @@ Unzip the archive.
     },
 #### 8.1.9. Save and close the .json file
 #### 8.1.10. Restart OpenRGB.exe
-#### 8.1.11.Make sure that “SonixQMK 0C45:5004” is enabled in the Settings tab
+#### 8.1.11. Make sure that “SonixQMK 0C45:5004” is enabled in the Settings tab
 #### 8.1.12. Check if your keyboard shows up on the Devices tab and customize the lighting from there
 ### 8.2. OpenRGB on Startup
 In order to have OpenRGB run on startup with a selected profile, follow [these instructions](https://gitlab.com/CalcProgrammer1/OpenRGB/-/wikis/Frequently-Asked-Questions#can-i-have-openrgb-start-automatically-when-i-log-in) on the [Official OpenRGB Wiki](https://gitlab.com/CalcProgrammer1/OpenRGB/-/wikis/home).
