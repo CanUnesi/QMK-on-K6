@@ -156,7 +156,7 @@ WSL:
 
 	\\wsl$\Ubuntu-20.04\home\<username>\qmk_firmware\keyboards\keychron\k6\keymaps
 ### 7.2. Navigate to the appropriate folder for your keyboard layout.
-### 7.3. Refer to this guide for instructions on how to edit the files inside here.
+### 7.3. Refer to [this guide](https://docs.qmk.fm/#/newbs_building_firmware?id=customize-the-layout-to-your-liking) for instructions on how to edit the files inside here.
 ### 7.4. Once you’re done, make the .bin file again following step 2.8 or 3.15.
 ### 7.5. Disconnect your keyboard, hold Space+B and reconnect to enter bootloader mode again.
 ### 7.6. Flash your new keymap following step 6, using the new .bin file.
