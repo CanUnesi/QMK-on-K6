@@ -86,13 +86,12 @@ Input your password when prompted.
 	util/qmk_install.sh
 ### 3.14. Update GCC
 #### 3.14.1. Run the following commands, line by line:
-
+	
+	cd ~
 	curl -o ./update-gcc10-ubuntu.sh https://raw.githubusercontent.com/radunanescu/ubuntu_gcc_armtoolchain10/main/update-gcc10-ubuntu.sh
 	sudo chmod +x update-gcc10-ubuntu.sh
 	sudo ./update-gcc10-ubuntu.sh
 #### *3.14.2. (Alternative) Copy the following lines, step by step and then right click on Ubuntu terminal.*
-
-	cd ~
 	
 	sudo apt install gcc-10 g++-10
     	
