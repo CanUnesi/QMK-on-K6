@@ -95,7 +95,7 @@ sudo apt install make
 
 	sudo chmod +x update-gcc10-ubuntu.sh
 	sudo ./update-gcc10-ubuntu.sh
-#### 3.14.5. **(Alternative)** Copy the following lines, step by step and then right click on Ubuntu terminal.
+#### *3.14.5. (Alternative) Copy the following lines, step by step and then right click on Ubuntu terminal.*
 
 	cd ~
 	
