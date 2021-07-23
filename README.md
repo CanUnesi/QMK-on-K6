@@ -85,7 +85,17 @@ sudo apt install make
 
 	util/qmk_install.sh
 ### 3.14. Update GCC
-Copy the following lines, step by step and then right click on Ubuntu terminal.
+#### 3.14.1 Download <a  href="https://raw.githubusercontent.com/radunanescu/ubuntu_gcc_armtoolchain10/main/update-gcc10-ubuntu.sh">this file</a>
+#### 3.14.2 Navigate to your root directory:
+
+	\\wsl$\Ubuntu-20.04\home\<username>\
+>	The username field should be the username you defined.
+#### 3.14.3 Place update-gcc10-ubuntu.sh into your root directory
+#### 3.14.4 Run the following commands:
+
+	sudo chmod +x update-gcc10-ubuntu.sh
+	sudo ./update-gcc10-ubuntu.sh
+#### 3.14.5 (Alternative) Copy the following lines, step by step and then right click on Ubuntu terminal.
 
 	cd ~
 	
