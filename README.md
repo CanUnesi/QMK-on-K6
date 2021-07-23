@@ -88,6 +88,8 @@ sudo apt install make
 #### 3.14.1. Run the following command:
 
 	curl -o ./update-gcc10-ubuntu.sh https://raw.githubusercontent.com/radunanescu/ubuntu_gcc_armtoolchain10/main/update-gcc10-ubuntu.sh
+	sudo chmod +x update-gcc10-ubuntu.sh
+	sudo ./update-gcc10-ubuntu.sh
 #### *3.14.2. (Alternative) Copy the following lines, step by step and then right click on Ubuntu terminal.*
 
 	cd ~
