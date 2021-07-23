@@ -85,7 +85,7 @@ sudo apt install make
 
 	util/qmk_install.sh
 ### 3.14. Update GCC
-#### 3.14.1. Run the following command:
+#### 3.14.1. Run the following commands, line by line:
 
 	curl -o ./update-gcc10-ubuntu.sh https://raw.githubusercontent.com/radunanescu/ubuntu_gcc_armtoolchain10/main/update-gcc10-ubuntu.sh
 	sudo chmod +x update-gcc10-ubuntu.sh
