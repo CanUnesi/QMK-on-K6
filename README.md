@@ -85,7 +85,7 @@ sudo apt install make
 
 	util/qmk_install.sh
 ### 3.14. Update GCC
-#### 3.14.1 Download <a  href="https://raw.githubusercontent.com/radunanescu/ubuntu_gcc_armtoolchain10/main/update-gcc10-ubuntu.sh" download>this file</a>
+#### 3.14.1 Download <a  href="https://raw.githubusercontent.com/radunanescu/ubuntu_gcc_armtoolchain10/main/update-gcc10-ubuntu.sh" download>this file</a> (right click, save as)
 #### 3.14.2 Navigate to your root directory:
 
 	\\wsl$\Ubuntu-20.04\home\<username>\
