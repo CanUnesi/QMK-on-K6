@@ -71,7 +71,7 @@ Run the following command:
 Input your password when prompted.
 ### 3.9. Install Make
 
-sudo apt install make
+	sudo apt install make
 ### 3.10. Clone the SonixQMK repository
 
 	git clone https://github.com/SonixQMK/qmk_firmware.git
