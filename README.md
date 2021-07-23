@@ -93,6 +93,8 @@ Input your password when prompted.
 	sudo ./update-gcc10-ubuntu.sh
 #### *3.14.2. (Alternative) Copy the following lines, step by step and then right click on Ubuntu terminal.*
 	
+	cd ~
+	
 	sudo apt install gcc-10 g++-10
     	
 	sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 --slave /usr/bin/g++ g++ /usr/bin/g++-10 --slave /usr/bin/gcov gcov /usr/bin/gcov-10
