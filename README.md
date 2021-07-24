@@ -171,8 +171,8 @@ WSL:
 #### 8.1.1. Switch to OpenRGB Branch
 In Ubuntu, run the following commands in qmk_firmware directory:
 
-	git checkout -b sn32_openrgb_new
-	git pull origin sn32_openrgb_new
+	git checkout -b sn32_openrgb
+	git pull origin sn32_openrgb
 #### 8.1.2. Make  the .bin file following step 2.8 or 3.15
 #### 8.1.3. Download OpenRGB
 Download the latest stable version from the [website](https://openrgb.org/).
