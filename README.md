@@ -166,22 +166,91 @@ WSL:
 ### 7.4. Once you’re done, make the .bin file again following step 2.8 or 3.15.
 ### 7.5. Disconnect your keyboard, hold Space+B and reconnect to enter bootloader mode again.
 ### 7.6. Flash your new keymap following step 6, using the new .bin file.
-## 8. OpenRGB
-### 8.1. Setting up OpenRGB
-#### 8.1.1. Switch to OpenRGB Branch
+## 8. (Optional) Disabling Sleep Breathing Effect
+For disabling the breathing effect on system sleep, which may become persistent after wake, navigate to:
+
+	%USERPROFILE%\qmk_firmware\keyboards\keychron\k6
+and edit the "rules.mk" file to have the following line:
+
+	SLEEP_LED_ENABLE = no
+## 9. (Optional) Activating the Caps Lock Led and Using a Color Indicator for CAPS LOCK
+Following these steps will let you activate the caps lock led and change the rgb of the caps lock key. The caps lock led is a single color(red) led so you might want to keep the led permanently off if you want to use another indicator color, follow the comment in the keymap.c addition.
+
+### 9.1. Open the following file in your qmk_firmware directory with a text editor or an IDE:
+
+	keyboards/keychron/k6/led_matrix.c
+Find the following line:
+
+	LED_TYPE led_state[LED_MATRIX_ROWS * LED_MATRIX_COLS];
+Add the following line after that:
+
+	LED_TYPE new_led_state[LED_MATRIX_ROWS * LED_MATRIX_COLS];
+Find:
+
+	static void flush(void) {}
+Replace with:
+
+	static void flush(void) {
+		for (int i = 0; i < LED_MATRIX_ROWS * LED_MATRIX_COLS; i++)
+			led_state[i] = new_led_state[i];
+	}
+Find:
+
+	void set_color(int index, uint8_t r, uint8_t g, uint8_t b) {
+		int corrected_index = led_pos[index];
+		led_state[corrected_index].r = r;
+		led_state[corrected_index].g = g;
+		led_state[corrected_index].b = b;
+	}
+Replace with:
+
+	void set_color(int index, uint8_t r, uint8_t g, uint8_t b) {
+		int corrected_index = led_pos[index];
+		new_led_state[corrected_index].r = r;
+		new_led_state[corrected_index].g = g;
+		new_led_state[corrected_index].b = b;
+	}
+### 9.2. Open the following file in your qmk_firmware directory depending on your layout (ansi/iso):
+
+	keyboards/keychron/k6/keymaps/ansi/config_led.h
+Add the following line:
+
+	#define LED_CAPS_LOCK_PIN B9
+### 9.3. Open the following file in your qmk_firmware directory depending on your layout (ansi/iso):
+
+	keyboards/keychron/k6/keymaps/ansi/keymap.c
+Add the following lines after the keymap array:
+
+	bool caps = false;
+	
+	bool led_update_user(led_t led_state) {
+		caps = led_state.caps_lock;
+		writePin(B9, caps); // Caps lock led: write "false" instead of "caps" if you don't want the red led
+		return false;
+	}
+	
+	void rgb_matrix_indicators_user(void) {
+		if (caps) {
+		// Change RGB color (Pin, R, G, B), Pin = 30-ANSI, 29-ISO
+		rgb_matrix_set_color(30, 255, 0, 0);
+		}
+	}
+## 10. (Optional) OpenRGB
+### 10.1. Setting up OpenRGB
+#### 10.1.1. Switch to OpenRGB Branch
 In Ubuntu, run the following commands in qmk_firmware directory:
 
 	git checkout -b sn32_openrgb
 	git pull origin sn32_openrgb
-#### 8.1.2. Make  the .bin file following step 2.8 or 3.15
-#### 8.1.3. Download OpenRGB
+#### 10.1.2. Make  the .bin file following step 2.8 or 3.15
+#### 10.1.3. Download OpenRGB
 Download the latest stable version from the [website](https://openrgb.org/).
 Unzip the archive.
-#### 8.1.4. Run OpenRGB.exe
-#### 8.1.5. Go to the Settings tab
-#### 8.1.6. Click “Open Settings Folder”
-#### 8.1.7. Open “OpenRGB.json” with a text editor
-#### 8.1.8. Add the following lines after the first curly bracket ( { ):
+#### 10.1.4. Run OpenRGB.exe
+#### 10.1.5. Go to the Settings tab
+#### 10.1.6. Click “Open Settings Folder”
+#### 10.1.7. Open “OpenRGB.json” with a text editor
+#### 10.1.8. Add the following lines after the first curly bracket ( { ):
     "QMKOpenRGBDevices": {
         "devices": [
             {
@@ -216,83 +285,14 @@ Unzip the archive.
             }
         ]
     },
-#### 8.1.9. Save and close the .json file
-#### 8.1.10. Restart OpenRGB.exe
-#### 8.1.11. Make sure that “SonixQMK 0C45:5004” is enabled in the Settings tab
-#### 8.1.12. Check if your keyboard shows up on the Devices tab and customize the lighting from there
-### 8.2. OpenRGB on Startup
+#### 10.1.9. Save and close the .json file
+#### 10.1.10. Restart OpenRGB.exe
+#### 10.1.11. Make sure that “SonixQMK 0C45:5004” is enabled in the Settings tab
+#### 10.1.12. Check if your keyboard shows up on the Devices tab and customize the lighting from there
+### 10.2. OpenRGB on Startup
 In order to have OpenRGB run on startup with a selected profile, follow [these instructions](https://gitlab.com/CalcProgrammer1/OpenRGB/-/wikis/Frequently-Asked-Questions#can-i-have-openrgb-start-automatically-when-i-log-in) on the [Official OpenRGB Wiki](https://gitlab.com/CalcProgrammer1/OpenRGB/-/wikis/home).
-### 8.3. (Optional) Disabling Sleep Breathing Effect
-For disabling the breathing effect on system sleep, which may become persistent after wake, navigate to:
-
-	%USERPROFILE%\qmk_firmware\keyboards\keychron\k6
-and edit the "rules.mk" file to have the following line:
-
-	SLEEP_LED_ENABLE = no
-### 8.4. (Optional) Activating the Caps Lock Led and Using a Color Indicator for CAPS LOCK
-Following these steps will let you activate the caps lock led and change the rgb of the caps lock key. The caps lock led is a single color(red) led so you might want to keep the led permanently off if you want to use another indicator color, follow the comment in the keymap.c addition.
-
-#### 8.4.1. Open the following file in your qmk_firmware directory with a text editor or an IDE:
-
-	keyboards/keychron/k6/led_matrix.c
-Find the following line:
-
-	LED_TYPE led_state[LED_MATRIX_ROWS * LED_MATRIX_COLS];
-Add the following line after that:
-
-	LED_TYPE new_led_state[LED_MATRIX_ROWS * LED_MATRIX_COLS];
-Find:
-
-	static void flush(void) {}
-Replace with:
-
-	static void flush(void) {
-		for (int i = 0; i < LED_MATRIX_ROWS * LED_MATRIX_COLS; i++)
-			led_state[i] = new_led_state[i];
-	}
-Find:
-
-	void set_color(int index, uint8_t r, uint8_t g, uint8_t b) {
-		int corrected_index = led_pos[index];
-		led_state[corrected_index].r = r;
-		led_state[corrected_index].g = g;
-		led_state[corrected_index].b = b;
-	}
-Replace with:
-
-	void set_color(int index, uint8_t r, uint8_t g, uint8_t b) {
-		int corrected_index = led_pos[index];
-		new_led_state[corrected_index].r = r;
-		new_led_state[corrected_index].g = g;
-		new_led_state[corrected_index].b = b;
-	}
-#### 8.4.2. Open the following file in your qmk_firmware directory depending on your layout (ansi/iso):
-
-	keyboards/keychron/k6/keymaps/ansi/config_led.h
-Add the following line:
-
-	#define LED_CAPS_LOCK_PIN B9
-#### 8.4.3. Open the following file in your qmk_firmware directory depending on your layout (ansi/iso):
-
-	keyboards/keychron/k6/keymaps/ansi/keymap.c
-Add the following lines after the keymap array:
-
-	bool caps = false;
-	
-	bool led_update_user(led_t led_state) {
-		caps = led_state.caps_lock;
-		writePin(B9, caps); // Caps lock led: write "false" instead of "caps" if you don't want the red led
-		return false;
-	}
-	
-	void rgb_matrix_indicators_user(void) {
-		if (caps) {
-		// Change RGB color (Pin, R, G, B), Pin = 30-ANSI, 29-ISO
-		rgb_matrix_set_color(30, 255, 0, 0);
-		}
-	}
-## 9. Reverting to the Original Firmware
-### 9.1. Download the appropriate firmware from [this link](https://www.keychron.com/pages/firmware-for-keychron-k6)
-### 9.2. Extract the archive
-### 9.3. Put your keyboard into bootloader mode by holding Space+B while connecting
-### 9.4. Run the official firmware updater tool
+## 11. Reverting to the Original Firmware
+### 11.1. Download the appropriate firmware from [this link](https://www.keychron.com/pages/firmware-for-keychron-k6)
+### 11.2. Extract the archive
+### 11.3. Put your keyboard into bootloader mode by holding Space+B while connecting
+### 11.4. Run the official firmware updater tool
