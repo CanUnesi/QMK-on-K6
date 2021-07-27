@@ -229,10 +229,8 @@ For disabling the breathing effect on system sleep, which may become persistent 
 and edit the "rules.mk" file to have the following line:
 
 	SLEEP_LED_ENABLE = no
-### 8.4. (Optional) Using a Color Indicator for CAPS LOCK
-Since K6 doesn’t have a Caps Lock indicator, it might be useful to change the color of the key when it’s activated, as it is on the original firmware. Following steps will show you how to achieve such an effect.
-
-Alternatively, you could clone [this fork](https://github.com/CanUnesi/qmk_firmware) and switch to the [sn32_openrgb_new branch](https://github.com/CanUnesi/qmk_firmware/tree/sn32_openrgb_new), then examine the related files and make adjustments accordingly.
+### 8.4. (Optional) Activating the Caps Lock Led and Using a Color Indicator for CAPS LOCK
+Following these steps will let you activate the caps lock led and change the rgb of the caps lock key. The caps lock led is a single color(red) led so you might want to keep the led permanently off if you want to use another indicator color, follow the comment in the keymap.c addition.
 
 #### 8.4.1. Open the following file in your qmk_firmware directory with a text editor or an IDE:
 
@@ -268,7 +266,13 @@ Replace with:
 		new_led_state[corrected_index].g = g;
 		new_led_state[corrected_index].b = b;
 	}
-Open the following file in your qmk_firmware directory depending on your layout (ansi/iso):
+#### 8.4.2. Open the following file in your qmk_firmware directory depending on your layout (ansi/iso):
+
+	keyboards/keychron/k6/keymaps/ansi/config_led.h
+Add the following line:
+
+	#define LED_CAPS_LOCK_PIN B9
+#### 8.4.3. Open the following file in your qmk_firmware directory depending on your layout (ansi/iso):
 
 	keyboards/keychron/k6/keymaps/ansi/keymap.c
 Add the following lines after the keymap array:
@@ -277,12 +281,13 @@ Add the following lines after the keymap array:
 	
 	bool led_update_user(led_t led_state) {
 		caps = led_state.caps_lock;
+		writePin(B9, caps); // Caps lock led: write "false" instead of "caps" if you don't want the red led
 		return false;
 	}
 	
 	void rgb_matrix_indicators_user(void) {
 		if (caps) {
-		// (Pin, R, G, B), check config_led.c for the pin number
+		// Change RGB color (Pin, R, G, B), Pin = 30-ANSI, 29-ISO
 		rgb_matrix_set_color(30, 255, 0, 0);
 		}
 	}
