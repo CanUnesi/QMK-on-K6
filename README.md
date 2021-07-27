@@ -173,7 +173,7 @@ For disabling the breathing effect on system sleep, which may become persistent 
 and edit the "rules.mk" file to have the following line:
 
 	SLEEP_LED_ENABLE = no
-## 9. (Optional) Activating the Caps Lock Led and Using a Color Indicator for CAPS LOCK
+## 9. (Optional) Activating the Caps Lock Led and Using a RGB Color Indicator
 Following these steps will let you activate the caps lock led and change the rgb of the caps lock key. The caps lock led is a single color(red) led so you might want to keep the led permanently off if you want to use another indicator color. In that case, follow the comment in the keymap.c addition.
 
 ### 9.1. Open the following file in your qmk_firmware directory with a text editor or an IDE:
