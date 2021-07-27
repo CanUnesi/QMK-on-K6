@@ -49,7 +49,7 @@ The MCU is the chip with the red spot, read the serial numbers and google it to 
 
 In our case, the serial number is **HFD2201KBA**.
 
-If you have trouble finding the model of your MCU, you could skip to **step 5** and follow until **step 6.2** to see the model in Sonix Flasher.
+If you have trouble finding the model of your MCU, you could skip to **step 4** and follow until **step 6.2** to see the model in Sonix Flasher.
 
 ## 2. Setting Up the Environment - QMK MSYS
 ### 2.1. Download the latest release (QMK_MSYS.exe) from [this repo](https://github.com/qmk/qmk_distro_msys/releases/latest).
