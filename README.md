@@ -254,16 +254,6 @@ Unzip the archive.
     "QMKOpenRGBDevices": {
         "devices": [
             {
-                "name": "Massdrop CTRL",
-                "usb_pid": "EED2",
-                "usb_vid": "04D8"
-            },
-            {
-                "name": "Massdrop ALT",
-                "usb_pid": "EED3",
-                "usb_vid": "04D8"
-            },
-            {
                 "name": "SonixQMK 0C45:5004",
                 "usb_pid": "5004",
                 "usb_vid": "0C45"
@@ -277,11 +267,6 @@ Unzip the archive.
                 "name": "SonixQMK 05AC:024F",
                 "usb_pid": "024F",
                 "usb_vid": "05AC"
-            },
-            {
-                "name": "KBDFans K67 MKII RGB",
-                "usb_pid": "1225",
-                "usb_vid": "4B42"
             }
         ]
     },
