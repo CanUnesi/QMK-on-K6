@@ -5,6 +5,33 @@ This guide will walk you through on installing QMK on a Keychron K6 RGB keyboard
 
 This guide doesn’t cover bluetooth connectivity, following this guide will disable your keyboards bluetooth mode.
 
+## Contents
+[1. Check Your MCU](#1-check-your-mcu)
+
+[2. Setting Up the Environment - QMK MSYS](#2-setting-up-the-environment---qmk-msys)
+
+[3. Setting Up the Environment - WSL](#3-alternative-setting-up-the-environment---wsl)
+
+[4. Get Sonix Flasher](#4-get-sonix-flasher)
+
+[5. Prepare the Keyboard](#5-prepare-the-keyboard)
+
+[6. Flash the Keyboard](#6-flash-the-keyboard)
+
+[7. Customizing the Layout](#7-customizing-the-layout)
+## Optional
+[8. Disabling Sleep Breathing Effect](#8-optional-disabling-sleep-breathing-effect)
+
+[9. Activating the Caps Lock Led and Using a RGB Color Indicator](#9-optional-activating-the-caps-lock-led-and-using-a-rgb-color-indicator)
+
+[10. Enable NKRO](#10-optional-enable-nkro)
+
+[11. OpenRGB](#11-optional-openrgb)
+
+[12. Reverting to the Original Firmware](#12-reverting-to-the-original-firmware)
+
+&nbsp; 
+
 ## 1. Check Your MCU
 
 ### 1.1. Remove the side plates and the plate screws
