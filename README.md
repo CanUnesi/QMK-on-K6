@@ -235,22 +235,38 @@ Add the following lines after the keymap array:
 		rgb_matrix_set_color(30, 255, 0, 0);
 		}
 	}
-## 10. (Optional) OpenRGB
-### 10.1. Setting up OpenRGB
-#### 10.1.1. Switch to OpenRGB Branch
+## 10. (Optional) Enable NKRO
+### 10.1. Open the following file in your qmk_firmware directory:
+
+	keyboards/keychron/k6/rules.mk
+Change the following line:
+
+	NKRO_ENABLE = no
+to
+
+	NKRO_ENABLE = yes
+### 10.2. Open the following file in your qmk_firmware directory depending on your layout (ansi/iso):
+
+	keyboards/keychron/k6/keymaps/ansi/config.h
+### Add the following line:
+
+	#define FORCE_NKRO
+## 11. (Optional) OpenRGB
+### 11.1. Setting up OpenRGB
+#### 11.1.1. Switch to OpenRGB Branch
 In Ubuntu, run the following commands in qmk_firmware directory:
 
 	git checkout -b sn32_openrgb
 	git pull origin sn32_openrgb
-#### 10.1.2. Make  the .bin file following step 2.8 or 3.15
-#### 10.1.3. Download OpenRGB
+#### 11.1.2. Make  the .bin file following step 2.8 or 3.15
+#### 11.1.3. Download OpenRGB
 Download the latest stable version from the [website](https://openrgb.org/).
 Unzip the archive.
-#### 10.1.4. Run OpenRGB.exe
-#### 10.1.5. Go to the Settings tab
-#### 10.1.6. Click “Open Settings Folder”
-#### 10.1.7. Open “OpenRGB.json” with a text editor
-#### 10.1.8. Add the following lines after the first curly bracket ( { ):
+#### 11.1.4. Run OpenRGB.exe
+#### 11.1.5. Go to the Settings tab
+#### 11.1.6. Click “Open Settings Folder”
+#### 11.1.7. Open “OpenRGB.json” with a text editor
+#### 11.1.8. Add the following lines after the first curly bracket ( { ):
     "QMKOpenRGBDevices": {
         "devices": [
             {
@@ -270,14 +286,14 @@ Unzip the archive.
             }
         ]
     },
-#### 10.1.9. Save and close the .json file
-#### 10.1.10. Restart OpenRGB.exe
-#### 10.1.11. Make sure that “SonixQMK 0C45:5004” is enabled in the Settings tab
-#### 10.1.12. Check if your keyboard shows up on the Devices tab and customize the lighting from there
-### 10.2. OpenRGB on Startup
+#### 11.1.9. Save and close the .json file
+#### 11.1.10. Restart OpenRGB.exe
+#### 11.1.11. Make sure that “SonixQMK 0C45:5004” is enabled in the Settings tab
+#### 11.1.12. Check if your keyboard shows up on the Devices tab and customize the lighting from there
+### 11.2. OpenRGB on Startup
 In order to have OpenRGB run on startup with a selected profile, follow [these instructions](https://gitlab.com/CalcProgrammer1/OpenRGB/-/wikis/Frequently-Asked-Questions#can-i-have-openrgb-start-automatically-when-i-log-in) on the [Official OpenRGB Wiki](https://gitlab.com/CalcProgrammer1/OpenRGB/-/wikis/home).
-## 11. Reverting to the Original Firmware
-### 11.1. Download the appropriate firmware from [this link](https://www.keychron.com/pages/firmware-for-keychron-k6)
-### 11.2. Extract the archive
-### 11.3. Put your keyboard into bootloader mode by holding Space+B while connecting
-### 11.4. Run the official firmware updater tool
+## 12. Reverting to the Original Firmware
+### 12.1. Download the appropriate firmware from [this link](https://www.keychron.com/pages/firmware-for-keychron-k6)
+### 12.2. Extract the archive
+### 12.3. Put your keyboard into bootloader mode by holding Space+B while connecting
+### 12.4. Run the official firmware updater tool
