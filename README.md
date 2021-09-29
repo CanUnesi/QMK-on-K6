@@ -1,5 +1,7 @@
 # Installing QMK on Keyhcron K6 RGB on Win10 for Dummies
-This guide will walk you through on installing QMK on a Keychron K6 RGB keyboard. Even though repos exist for C1, K4 and K8, this guide will only cover the K6 RGB model with a SN32F24x MCU.
+This guide will walk you through on installing QMK on a Keychron K6 RGB keyboard. Even though repos exist for other models and the white backlit version, this guide will only cover the K6 RGB model with a SN32F24x MCU. 
+
+You can follow these steps for other supported RGB boards, the difference in the steps for the other models lie in the location of the boot pins and the folders associated with the corresponding models. Some models, such as K4, will have their boot pins right under the spacebar and will require only the removal of the keycap rather than a full disassembly. White backlit K6 has a different MCU and isn't covered by this guide yet.
 
 **There is a small chance that you may brick your keyboard in the flashing process**, continue at your own risk. Use an appropriate cable, make sure you won’t lose power during flashing and follow the steps carefully.
 
@@ -68,14 +70,14 @@ You can hit the windows key and type “QMK MSYS” to find the program
 ### 2.8. Make default firmware
 Depending on your [keyboard layout](https://upload.wikimedia.org/wikipedia/commons/1/14/Physical_keyboard_layouts_comparison_ANSI_ISO.png):
 
-    make keychron/k6:ansi
+    make keychron/k6/rgb:ansi
 or
 
-	make keychron/k6:iso
+	make keychron/k6/rgb:iso
 ### 2.9. Navigate to the following directory through file explorer (Win + E):
 	%USERPROFILE%\qmk_firmware
 ### 2.10. Locate and copy the .bin file
-Depending on your layout, copy “keychron_k6_ansi.bin” or “keychron_k6_iso.bin” file to a convenient place such as your desktop.
+Depending on your layout, copy “keychron_k6_rgb_ansi.bin” or “keychron_k6_rgb_iso.bin” file to a convenient place such as your desktop.
 ### 2.11. (Optional) Create a shortcut for the directory for later
 ## 3. (Alternative) Setting Up the Environment - WSL
 >Note: If you experience random disconnections after using the WSL method, please try the QMK Msys method.
@@ -148,10 +150,10 @@ Change directory to qmk_firmware:
 
 Depending on your [keyboard layout](https://upload.wikimedia.org/wikipedia/commons/1/14/Physical_keyboard_layouts_comparison_ANSI_ISO.png):
 
-    make keychron/k6:ansi
+    make keychron/k6/rgb:ansi
 or
 
-	make keychron/k6:iso
+	make keychron/k6/rgb:iso
 ### 3.16. Navigate to your directory in a file explorer (Windows Key + E):
 
 	\\wsl$\Ubuntu-20.04\home\<username>\qmk_firmware
@@ -159,7 +161,7 @@ or
 
 ![](https://github.com/CanUnesi/QMK-on-K6/raw/main/image3.jpg)
 ### 3.17. Locate and copy the .bin file
-Depending on your layout, copy "keychron_k6_ansi.bin" or "keychron_k6_iso.bin" file to a convenient place such as your desktop.
+Depending on your layout, copy "keychron_k6_rgb_ansi.bin" or "keychron_k6_rgb_iso.bin" file to a convenient place such as your desktop.
 ### 3.18. (Optional) Create a shortcut for the directory for later
 ## 4. Get Sonix Flasher
 ### 4.1. Go to https://github.com/SonixQMK/sonix-flasher/releases/tag/v0.2.1
@@ -184,10 +186,10 @@ Using a conductor, such as a control pen or a tweezer, touch the two pins in the
 ### 7.1. Navigate to the keymap directory
 QMK MSYS:
 
-	%USERPROFILE%\qmk_firmware\keyboards\keychron\k6\keymaps
+	%USERPROFILE%\qmk_firmware\keyboards\keychron\k6\rgb\keymaps
 WSL:
 
-	\\wsl$\Ubuntu-20.04\home\<username>\qmk_firmware\keyboards\keychron\k6\keymaps
+	\\wsl$\Ubuntu-20.04\home\<username>\qmk_firmware\keyboards\keychron\k6\rgb\keymaps
 ### 7.2. Navigate to the appropriate folder for your keyboard layout.
 ### 7.3. Refer to [this guide](https://docs.qmk.fm/#/newbs_building_firmware?id=customize-the-layout-to-your-liking) for instructions on how to edit the files inside here.
 ### 7.4. Once you’re done, make the .bin file again following step 2.8 or 3.15.
@@ -200,7 +202,9 @@ For disabling the breathing effect on system sleep, which may become persistent 
 and edit the "rules.mk" file to have the following line:
 
 	SLEEP_LED_ENABLE = no
-## 9. (Optional) Activating the Caps Lock Led and Using a RGB Color Indicator
+## 9. (OLD) (Optional) Activating the Caps Lock Led and Using a RGB Color Indicator
+**Caps lock led is now activated by default, you can still follow these steps for the RGB indicator or for disabling it.**
+
 Following these steps will let you activate the caps lock led and change the rgb of the caps lock key. The caps lock led is a single color(red) led so you might want to keep the led permanently off if you want to use another indicator color. In that case, follow the comment in the keymap.c addition.
 
 ### 9.1. Open the following file in your qmk_firmware directory with a text editor or an IDE:
