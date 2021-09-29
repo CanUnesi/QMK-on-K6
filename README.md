@@ -198,7 +198,7 @@ WSL:
 ## 8. (Optional) Disabling Sleep Breathing Effect
 For disabling the breathing effect on system sleep, which may become persistent after wake, navigate to:
 
-	%USERPROFILE%\qmk_firmware\keyboards\keychron\k6
+	%USERPROFILE%\qmk_firmware\keyboards\keychron\k6\rgb
 and edit the "rules.mk" file to have the following line:
 
 	SLEEP_LED_ENABLE = no
@@ -209,7 +209,7 @@ Following these steps will let you activate the caps lock led and change the rgb
 
 ### 9.1. Open the following file in your qmk_firmware directory with a text editor or an IDE:
 
-	keyboards/keychron/k6/led_matrix.c
+	keyboards/keychron/k6/rgb/led_matrix.c
 Find the following line:
 
 	LED_TYPE led_state[LED_MATRIX_ROWS * LED_MATRIX_COLS];
@@ -243,13 +243,13 @@ Replace with:
 	}
 ### 9.2. Open the following file in your qmk_firmware directory depending on your layout (ansi/iso):
 
-	keyboards/keychron/k6/keymaps/ansi/config_led.h
+	keyboards/keychron/k6/rgb/keymaps/ansi/config_led.h
 Add the following line:
 
 	#define LED_CAPS_LOCK_PIN B9
 ### 9.3. Open the following file in your qmk_firmware directory depending on your layout (ansi/iso):
 
-	keyboards/keychron/k6/keymaps/ansi/keymap.c
+	keyboards/keychron/k6/rgb/keymaps/ansi/keymap.c
 Add the following lines after the keymap array:
 
 	bool caps = false;
@@ -269,7 +269,7 @@ Add the following lines after the keymap array:
 ## 10. (Optional) Enable NKRO
 ### 10.1. Open the following file in your qmk_firmware directory:
 
-	keyboards/keychron/k6/rules.mk
+	keyboards/keychron/k6/rgb/rules.mk
 Change the following line:
 
 	NKRO_ENABLE = no
@@ -278,7 +278,7 @@ to
 	NKRO_ENABLE = yes
 ### 10.2. Open the following file in your qmk_firmware directory depending on your layout (ansi/iso):
 
-	keyboards/keychron/k6/keymaps/ansi/config.h
+	keyboards/keychron/k6/rgb/keymaps/ansi/config.h
 ### Add the following line:
 
 	#define FORCE_NKRO
