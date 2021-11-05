@@ -168,11 +168,12 @@ Depending on your layout, copy "keychron_k6_rgb_ansi.bin" or "keychron_k6_rgb_is
 ### 4.2. Download "flasher-win.zip"
 ### 4.3. Unzip the archive to a convenient place such as your desktop
 ## 5. Prepare the Keyboard
-### 5.1. Remove the side plates and the plate screws if you haven’t done already
+### 5.1. Use the 3-position switch to put the keyboard into wired mode
+### 5.2. Remove the side plates and the plate screws if you haven’t done already
 See **Step 1** for instructions.
-### 5.2. Unplug the Battery
+### 5.3. Unplug the Battery
 Pull the connector gently to remove the cables attaching the battery to the board.
-### 5.3. Enter Boot Mode
+### 5.4. Enter Boot Mode
 Using a conductor, such as a control pen or a tweezer, touch the two pins in the image below. While shorting the pins, plug in the keyboard.
 ![](https://github.com/CanUnesi/QMK-on-K6/raw/main/image4.jpg)
 ## 6. Flash the Keyboard
