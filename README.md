@@ -7,7 +7,7 @@ You can follow these steps for other supported RGB boards, the difference in the
 
 This guide doesn’t cover bluetooth connectivity, following this guide will disable your keyboards bluetooth mode.
 
-**If you're here for VIA, see [check your MCU](#1-check-your-mcu) first and then follow [step 8](#8-optional-using-via).**
+**If you're here for VIA, [check your MCU](#1-check-your-mcu) first and then follow [step 8](#8-optional-using-via).**
 
 ## Contents
 [1. Check Your MCU](#1-check-your-mcu)
