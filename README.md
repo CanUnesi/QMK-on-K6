@@ -7,6 +7,8 @@ You can follow these steps for other supported RGB boards, the difference in the
 
 This guide doesn’t cover bluetooth connectivity, following this guide will disable your keyboards bluetooth mode.
 
+**If you're here for VIA, see [check your MCU](#1-check-your-mcu) first and then follow [step 8](#8-optional-using-via).**
+
 ## Contents
 [1. Check Your MCU](#1-check-your-mcu)
 
@@ -22,11 +24,13 @@ This guide doesn’t cover bluetooth connectivity, following this guide will dis
 
 [7. Customizing the Layout](#7-customizing-the-layout)
 ## Optional
-[8. Disabling Sleep Breathing Effect](#8-optional-disabling-sleep-breathing-effect)
+[8. Using VIA](#8-optional-using-via)
 
-[9. Enable NKRO](#9-optional-enable-nkro)
+[9. Disabling Sleep Breathing Effect](#9-optional-disabling-sleep-breathing-effect)
 
-[10. Reverting to the Original Firmware](#10-reverting-to-the-original-firmware)
+[10. Enable NKRO](#10-optional-enable-nkro)
+
+[11. Reverting to the Original Firmware](#11-reverting-to-the-original-firmware)
 
 &nbsp; 
 
@@ -192,25 +196,32 @@ WSL:
 ### 7.4. Once you’re done, make the .bin file again following step 2.8 or 3.15.
 ### 7.5. Disconnect your keyboard, hold Space+B and reconnect to enter bootloader mode again.
 ### 7.6. Flash your new keymap following step 6, using the new .bin file.
-## 8. (Optional) Disabling Sleep Breathing Effect
+## 8. (Optional) Using VIA
+To use VIA on your keyboard, you can skip all the steps related to building your own firmware and flash a pre-compiled VIA-compatible firmware.
+### 8.1. Download the pre-compiled firmware archive from the most recent run from [here](https://github.com/SonixQMK/qmk_firmware/actions?query=branch%3Asn32+event%3Apush)
+### 8.1. Find and extract the appropriate firmware for your keyboard from the archive (e.g. "keychron_k6_rgb_via_ansi.bin")
+### 8.2. Get the appropriate json from the [keymaps directory](https://github.com/SonixQMK/qmk_firmware/tree/sn32/keyboards/keychron/k6/keymaps)
+### 8.3. Follow steps 4 through 6 using the .bin file you extracted
+### 8.4. Import the json into your VIA App
+## 9. (Optional) Disabling Sleep Breathing Effect
 For disabling the breathing effect on system sleep, which may become persistent after wake, navigate to:
 
 	%USERPROFILE%\qmk_firmware\keyboards\keychron\k6\rgb
 and edit the "rules.mk" file to have the following line:
 
 	SLEEP_LED_ENABLE = no
-## 9. (Optional) Enable NKRO
-### 9.1. Open the following file in your qmk_firmware directory depending on your layout (ansi/iso):
+## 10. (Optional) Enable NKRO
+### 10.1. Open the following file in your qmk_firmware directory depending on your layout (ansi/iso):
 
 	keyboards/keychron/k6/keymaps/ansi/config.h
 ### Add the following line:
 
 	#define FORCE_NKRO
-## 10. Reverting to the Original Firmware
-### 10.1. Download the appropriate firmware from [this link](https://www.keychron.com/pages/firmware-for-keychron-k6)
-### 10.2. Extract the archive
-### 10.3. Put your keyboard into bootloader mode by holding Space+B while connecting
-### 10.4. Run the official firmware updater tool	
+## 11. Reverting to the Original Firmware
+### 11.1. Download the appropriate firmware from [this link](https://www.keychron.com/pages/firmware-for-keychron-k6)
+### 11.2. Extract the archive
+### 11.3. Put your keyboard into bootloader mode by holding Space+B while connecting
+### 11.4. Run the official firmware updater tool	
 
 ## XX. (Optional) OpenRGB
 OpenRGB branch is currently outdated. Keeping the steps here in case someone really wants to use it.
