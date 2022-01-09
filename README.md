@@ -187,10 +187,10 @@ Using a conductor, such as a control pen or a tweezer, touch the two pins in the
 ### 7.1. Navigate to the keymap directory
 QMK MSYS:
 
-	%USERPROFILE%\qmk_firmware\keyboards\keychron\k6\rgb\keymaps
+	%USERPROFILE%\qmk_firmware\keyboards\keychron\k6\keymaps
 WSL:
 
-	\\wsl$\Ubuntu-20.04\home\<username>\qmk_firmware\keyboards\keychron\k6\rgb\keymaps
+	\\wsl$\Ubuntu-20.04\home\<username>\qmk_firmware\keyboards\keychron\k6\keymaps
 ### 7.2. Navigate to the appropriate folder for your keyboard layout.
 ### 7.3. Refer to [this guide](https://docs.qmk.fm/#/newbs_building_firmware?id=customize-the-layout-to-your-liking) for instructions on how to edit the files inside here.
 ### 7.4. Once you’re done, make the .bin file again following step 2.8 or 3.15.
@@ -244,13 +244,13 @@ Replace with:
 	}
 ### 9.2. Open the following file in your qmk_firmware directory depending on your layout (ansi/iso):
 
-	keyboards/keychron/k6/rgb/keymaps/ansi/config_led.h
+	keyboards/keychron/k6/keymaps/ansi/config_led.h
 Add the following line:
 
 	#define LED_CAPS_LOCK_PIN B9
 ### 9.3. Open the following file in your qmk_firmware directory depending on your layout (ansi/iso):
 
-	keyboards/keychron/k6/rgb/keymaps/ansi/keymap.c
+	keyboards/keychron/k6/keymaps/ansi/keymap.c
 Add the following lines after the keymap array:
 
 	bool caps = false;
