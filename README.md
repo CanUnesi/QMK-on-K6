@@ -164,7 +164,7 @@ or
 Depending on your layout, copy "keychron_k6_rgb_ansi.bin" or "keychron_k6_rgb_iso.bin" file to a convenient place such as your desktop.
 ### 3.18. (Optional) Create a shortcut for the directory for later
 ## 4. Get Sonix Flasher
-### 4.1. Go to https://github.com/SonixQMK/sonix-flasher/releases/tag/v0.2.1
+### 4.1. Go to https://github.com/SonixQMK/sonix-flasher/releases/latest
 ### 4.2. Download "flasher-win.zip"
 ### 4.3. Unzip the archive to a convenient place such as your desktop
 ## 5. Prepare the Keyboard
