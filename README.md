@@ -24,13 +24,9 @@ This guide doesn’t cover bluetooth connectivity, following this guide will dis
 ## Optional
 [8. Disabling Sleep Breathing Effect](#8-optional-disabling-sleep-breathing-effect)
 
-[9. Activating the Caps Lock Led and Using a RGB Color Indicator](#9-optional-activating-the-caps-lock-led-and-using-a-rgb-color-indicator)
+[9. Enable NKRO](#9-optional-enable-nkro)
 
-[10. Enable NKRO](#10-optional-enable-nkro)
-
-[11. OpenRGB](#11-optional-openrgb)
-
-[12. Reverting to the Original Firmware](#12-reverting-to-the-original-firmware)
+[10. Reverting to the Original Firmware](#10-reverting-to-the-original-firmware)
 
 &nbsp; 
 
@@ -203,102 +199,36 @@ For disabling the breathing effect on system sleep, which may become persistent 
 and edit the "rules.mk" file to have the following line:
 
 	SLEEP_LED_ENABLE = no
-## 9. (OLD) (Optional) Activating the Caps Lock Led and Using a RGB Color Indicator
-**Caps lock led is now activated by default, you can still follow these steps for the RGB indicator or for disabling it.**
+## 9. (Optional) Enable NKRO
+### 9.1. Open the following file in your qmk_firmware directory depending on your layout (ansi/iso):
 
-Following these steps will let you activate the caps lock led and change the rgb of the caps lock key. The caps lock led is a single color(red) led so you might want to keep the led permanently off if you want to use another indicator color. In that case, follow the comment in the keymap.c addition.
-
-### 9.1. Open the following file in your qmk_firmware directory with a text editor or an IDE:
-
-	keyboards/keychron/k6/rgb/led_matrix.c
-Find the following line:
-
-	LED_TYPE led_state[LED_MATRIX_ROWS * LED_MATRIX_COLS];
-Add the following line after that:
-
-	LED_TYPE new_led_state[LED_MATRIX_ROWS * LED_MATRIX_COLS];
-Find:
-
-	static void flush(void) {}
-Replace with:
-
-	static void flush(void) {
-		for (int i = 0; i < LED_MATRIX_ROWS * LED_MATRIX_COLS; i++)
-			led_state[i] = new_led_state[i];
-	}
-Find:
-
-	void set_color(int index, uint8_t r, uint8_t g, uint8_t b) {
-		int corrected_index = led_pos[index];
-		led_state[corrected_index].r = r;
-		led_state[corrected_index].g = g;
-		led_state[corrected_index].b = b;
-	}
-Replace with:
-
-	void set_color(int index, uint8_t r, uint8_t g, uint8_t b) {
-		int corrected_index = led_pos[index];
-		new_led_state[corrected_index].r = r;
-		new_led_state[corrected_index].g = g;
-		new_led_state[corrected_index].b = b;
-	}
-### 9.2. Open the following file in your qmk_firmware directory depending on your layout (ansi/iso):
-
-	keyboards/keychron/k6/keymaps/ansi/config_led.h
-Add the following line:
-
-	#define LED_CAPS_LOCK_PIN B9
-### 9.3. Open the following file in your qmk_firmware directory depending on your layout (ansi/iso):
-
-	keyboards/keychron/k6/keymaps/ansi/keymap.c
-Add the following lines after the keymap array:
-
-	bool caps = false;
-	
-	bool led_update_user(led_t led_state) {
-		caps = led_state.caps_lock;
-		writePin(B9, caps); // Caps lock led: write "false" instead of "caps" if you don't want the red led
-		return false;
-	}
-	
-	void rgb_matrix_indicators_user(void) {
-		if (caps) {
-		// Change RGB color (Pin, R, G, B), Pin = 30-ANSI, 29-ISO
-		rgb_matrix_set_color(30, 255, 0, 0);
-		}
-	}
-## 10. (Optional) Enable NKRO
-### 10.1. Open the following file in your qmk_firmware directory:
-
-	keyboards/keychron/k6/rgb/rules.mk
-Change the following line:
-
-	NKRO_ENABLE = no
-to
-
-	NKRO_ENABLE = yes
-### 10.2. Open the following file in your qmk_firmware directory depending on your layout (ansi/iso):
-
-	keyboards/keychron/k6/rgb/keymaps/ansi/config.h
+	keyboards/keychron/k6/keymaps/ansi/config.h
 ### Add the following line:
 
 	#define FORCE_NKRO
-## 11. (Optional) OpenRGB
-### 11.1. Setting up OpenRGB
-#### 11.1.1. Switch to OpenRGB Branch
+## 10. Reverting to the Original Firmware
+### 10.1. Download the appropriate firmware from [this link](https://www.keychron.com/pages/firmware-for-keychron-k6)
+### 10.2. Extract the archive
+### 10.3. Put your keyboard into bootloader mode by holding Space+B while connecting
+### 10.4. Run the official firmware updater tool	
+
+## XX. (Optional) OpenRGB
+OpenRGB branch is currently outdated. Keeping the steps here in case someone really wants to use it.
+### XX.1. Setting up OpenRGB
+#### XX.1.1. Switch to OpenRGB Branch
 In Ubuntu, run the following commands in qmk_firmware directory:
 
 	git checkout -b sn32_openrgb
 	git pull origin sn32_openrgb
-#### 11.1.2. Make  the .bin file following step 2.8 or 3.15
-#### 11.1.3. Download OpenRGB
+#### XX.1.2. Make  the .bin file following step 2.8 or 3.15
+#### XX.1.3. Download OpenRGB
 Download the latest stable version from the [website](https://openrgb.org/).
 Unzip the archive.
-#### 11.1.4. Run OpenRGB.exe
-#### 11.1.5. Go to the Settings tab
-#### 11.1.6. Click “Open Settings Folder”
-#### 11.1.7. Open “OpenRGB.json” with a text editor
-#### 11.1.8. Add the following lines after the first curly bracket ( { ):
+#### XX.1.4. Run OpenRGB.exe
+#### XX.1.5. Go to the Settings tab
+#### XX.1.6. Click “Open Settings Folder”
+#### XX.1.7. Open “OpenRGB.json” with a text editor
+#### XX.1.8. Add the following lines after the first curly bracket ( { ):
     "QMKOpenRGBDevices": {
         "devices": [
             {
@@ -318,14 +248,9 @@ Unzip the archive.
             }
         ]
     },
-#### 11.1.9. Save and close the .json file
-#### 11.1.10. Restart OpenRGB.exe
-#### 11.1.11. Make sure that “SonixQMK 0C45:5004” is enabled in the Settings tab
-#### 11.1.12. Check if your keyboard shows up on the Devices tab and customize the lighting from there
-### 11.2. OpenRGB on Startup
+#### XX.1.9. Save and close the .json file
+#### XX.1.10. Restart OpenRGB.exe
+#### XX.1.11. Make sure that “SonixQMK 0C45:5004” is enabled in the Settings tab
+#### XX.1.12. Check if your keyboard shows up on the Devices tab and customize the lighting from there
+### XX.2. OpenRGB on Startup
 In order to have OpenRGB run on startup with a selected profile, follow [these instructions](https://gitlab.com/CalcProgrammer1/OpenRGB/-/wikis/Frequently-Asked-Questions#can-i-have-openrgb-start-automatically-when-i-log-in) on the [Official OpenRGB Wiki](https://gitlab.com/CalcProgrammer1/OpenRGB/-/wikis/home).
-## 12. Reverting to the Original Firmware
-### 12.1. Download the appropriate firmware from [this link](https://www.keychron.com/pages/firmware-for-keychron-k6)
-### 12.2. Extract the archive
-### 12.3. Put your keyboard into bootloader mode by holding Space+B while connecting
-### 12.4. Run the official firmware updater tool
