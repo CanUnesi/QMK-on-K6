@@ -175,6 +175,9 @@ See **Step 1** for instructions.
 Pull the connector gently to remove the cables attaching the battery to the board.
 ### 5.4. Enter Boot Mode
 Using a conductor, such as a control pen or a tweezer, touch the two pins in the image below. While shorting the pins, plug in the keyboard.
+
+***Reminder: If you're proceeding with something else than a K6, such as a K4, then the boot pins might be right under the spacebar keycap. Don't go poking these pins, ask the discord channel if you're unsure.***
+
 ![](https://github.com/CanUnesi/QMK-on-K6/raw/main/image4.jpg)
 ## 6. Flash the Keyboard
 ### 6.1. Run "Sonix Keyboard Flasher.exe"
