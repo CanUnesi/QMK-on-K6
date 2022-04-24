@@ -66,7 +66,7 @@ You can hit the windows key and type “QMK MSYS” to find the program
 	make git-submodule
 ### 2.7. Install utilities
 	util/qmk_install.sh
->**Note: You might need to run this twice if the QMK MSYS terminal is closed in the process.**
+>Note: You might need to run this twice if the QMK MSYS terminal is closed in the process.
 ### 2.8. Make default firmware
 Depending on your [keyboard layout](https://upload.wikimedia.org/wikipedia/commons/1/14/Physical_keyboard_layouts_comparison_ANSI_ISO.png):
 
