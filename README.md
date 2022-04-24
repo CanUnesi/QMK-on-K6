@@ -74,6 +74,8 @@ Depending on your [keyboard layout](https://upload.wikimedia.org/wikipedia/commo
 or
 
 	make keychron/k6/rgb:iso
+	
+>**Note: ❗ If this fails with a segmentation fault, delete all folders in the keyboards folder except the keychron folder.**
 ### 2.9. Navigate to the following directory through file explorer (Win + E):
 	%USERPROFILE%\qmk_firmware
 ### 2.10. Locate and copy the .bin file
