@@ -1,5 +1,5 @@
 # Installing QMK on Keyhcron K6 RGB on Win10 for Dummies
-This guide will walk you through on installing QMK on a Keychron K6 RGB keyboard. Even though repos exist for other models and the white backlit version, this guide will only cover the K6 RGB model with a SN32F24x MCU. 
+This guide will walk you through on installing QMK on a Keychron K6 RGB keyboard. Even though repos exist for other models and the white backlit version, this guide will only cover the K6 RGB model with a SN32F24x MCU.
 
 You can follow these steps for other supported RGB boards, the difference in the steps for the other models lie in the location of the boot pins and the folders associated with the corresponding models. Some models, such as K4, will have their boot pins right under the spacebar and will require only the removal of the keycap rather than a full disassembly. White backlit K6 has a different MCU and isn't covered by this guide yet.
 
@@ -32,12 +32,12 @@ This guide doesn’t cover bluetooth connectivity, following this guide will dis
 
 [11. Reverting to the Original Firmware](#11-reverting-to-the-original-firmware)
 
-&nbsp; 
+&nbsp;
 
 ## 1. Check Your MCU
 
 ### 1.1. Remove the side plates and the plate screws
-You’ll probably need an electronics screwdriver kit at this step. Disconnect your keyboard and keep it in “Cable” mode. 
+You’ll probably need an electronics screwdriver kit at this step. Disconnect your keyboard and keep it in “Cable” mode.
 
 Refer to [the official instructions](https://www.keychron.com/pages/how-to-disassemble-the-k6) for disassembly.
 
@@ -60,27 +60,31 @@ If you have trouble finding the model of your MCU, you could skip to **step 4** 
 You can hit the windows key and type “QMK MSYS” to find the program
 ### 2.4. Clone the SonixQMK repository
     git clone https://github.com/SonixQMK/qmk_firmware.git
-### 2.5. Change directory to qmk_firmware
+### 2.5. Change to sn32_stable branch
+    git checkout sn32_stable
+
+Keychron K6 is no longer in the main develoment branch, but it's still available in the stable branch `sn32_stable`
+### 2.6. Change directory to qmk_firmware
 	cd qmk_firmware
-### 2.6. Pull the submodules
+### 2.7. Pull the submodules
 	make git-submodule
-### 2.7. Install utilities
+### 2.8. Install utilities
 	util/qmk_install.sh
 >Note: You might need to run this twice if the QMK MSYS terminal is closed in the process.
-### 2.8. Make default firmware
+### 2.9. Make default firmware
 Depending on your [keyboard layout](https://upload.wikimedia.org/wikipedia/commons/1/14/Physical_keyboard_layouts_comparison_ANSI_ISO.png):
 
     make keychron/k6/rgb:ansi
 or
 
 	make keychron/k6/rgb:iso
-	
+
 >**Note: ❗ If this fails with a segmentation fault, delete all folders in the keyboards folder except the keychron folder.**
-### 2.9. Navigate to the following directory through file explorer (Win + E):
+### 2.10. Navigate to the following directory through file explorer (Win + E):
 	%USERPROFILE%\qmk_firmware
-### 2.10. Locate and copy the .bin file
+### 2.11. Locate and copy the .bin file
 Depending on your layout, copy “keychron_k6_rgb_ansi.bin” or “keychron_k6_rgb_iso.bin” file to a convenient place such as your desktop.
-### 2.11. (Optional) Create a shortcut for the directory for later
+### 2.12. (Optional) Create a shortcut for the directory for later
 ## 3. (Alternative) Setting Up the Environment - WSL
 >Note: If you experience random disconnections after using the WSL method, please try the QMK Msys method.
 ### 3.1. Navigate to Windows Features
@@ -106,30 +110,34 @@ Input your password when prompted.
 ### 3.10. Clone the SonixQMK repository
 
 	git clone https://github.com/SonixQMK/qmk_firmware.git
-### 3.11. Change directory to qmk_firmware
+### 3.11. Change to sn32_stable branch
+    git checkout sn32_stable
+
+Keychron K6 is no longer in the main develoment branch, but it's still available in the stable branch `sn32_stable`
+### 3.12. Change directory to qmk_firmware
 
 	cd qmk_firmware
-### 3.12. Pull the submodules
+### 3.13. Pull the submodules
 
 	make git-submodule
-### 3.13. Install utilities
+### 3.14. Install utilities
 
 	util/qmk_install.sh
-### 3.14. Update GCC
-#### 3.14.1. Run the following commands, line by line:
-	
+### 3.15. Update GCC
+#### 3.15.1. Run the following commands, line by line:
+
 	cd ~
 	curl -o ./update-gcc10-ubuntu.sh https://raw.githubusercontent.com/radunanescu/ubuntu_gcc_armtoolchain10/main/update-gcc10-ubuntu.sh
 	sudo chmod +x update-gcc10-ubuntu.sh
 	sudo ./update-gcc10-ubuntu.sh
-#### *3.14.2. (Alternative) Copy the following lines, step by step and then right click on Ubuntu terminal.*
-	
+#### *3.15.2. (Alternative) Copy the following lines, step by step and then right click on Ubuntu terminal.*
+
 	cd ~
-	
+
 	sudo apt install gcc-10 g++-10
-    	
+
 	sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 --slave /usr/bin/g++ g++ /usr/bin/g++-10 --slave /usr/bin/gcov gcov /usr/bin/gcov-10
-	
+
 	sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90 --slave /usr/bin/g++ g++ /usr/bin/g++-9 --slave /usr/bin/gcov gcov /usr/bin/gcov-9
 
 	sudo apt remove gcc-arm-none-eabi
@@ -145,7 +153,7 @@ Input your password when prompted.
 	sudo ln -sf /usr/share/gcc-arm-none-eabi-10-2020-q4-major/bin/arm-none-eabi-gdb /usr/bin/arm-none-eabi-gdb
 
 	sudo ln -sf /usr/share/gcc-arm-none-eabi-10-2020-q4-major/bin/arm-none-eabi-size /usr/bin/arm-none-eabi-size
-### 3.15. Make default firmware
+### 3.16. Make default firmware
 Change directory to qmk_firmware:
 
 	cd ~/qmk_firmware
@@ -156,17 +164,18 @@ Depending on your [keyboard layout](https://upload.wikimedia.org/wikipedia/commo
 or
 
 	make keychron/k6/rgb:iso
-### 3.16. Navigate to your directory in a file explorer (Windows Key + E):
+### 3.17. Navigate to your directory in a file explorer (Windows Key + E):
 
 	\\wsl$\Ubuntu-20.04\home\<username>\qmk_firmware
 >	The username field should be the ubuntu username you defined.
 
 ![](https://github.com/CanUnesi/QMK-on-K6/raw/main/image3.jpg)
-### 3.17. Locate and copy the .bin file
+### 3.18. Locate and copy the .bin file
 Depending on your layout, copy "keychron_k6_rgb_ansi.bin" or "keychron_k6_rgb_iso.bin" file to a convenient place such as your desktop.
-### 3.18. (Optional) Create a shortcut for the directory for later
+### 3.19. (Optional) Create a shortcut for the directory for later
 ## 4. Get Sonix Flasher
 ### 4.1. Go to https://github.com/SonixQMK/sonix-flasher/releases/latest
+#### 4.1.1 Alternatively use https://github.com/SonixQMK/SonixFlasherC
 ### 4.2. Download "flasher-win.zip"
 ### 4.3. Unzip the archive to a convenient place such as your desktop
 ## 5. Prepare the Keyboard
@@ -226,7 +235,7 @@ and edit the "rules.mk" file to have the following line:
 ### 11.1. Download the appropriate firmware from [this link](https://www.keychron.com/pages/firmware-for-keychron-k6)
 ### 11.2. Extract the archive
 ### 11.3. Put your keyboard into bootloader mode by holding Space+B while connecting
-### 11.4. Run the official firmware updater tool	
+### 11.4. Run the official firmware updater tool
 
 ## XX. (Optional) OpenRGB
 OpenRGB branch is currently outdated. Keeping the steps here in case someone really wants to use it.
