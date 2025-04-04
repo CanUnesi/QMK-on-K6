@@ -213,6 +213,11 @@ WSL:
 ## 8. (Optional) Using VIA
 To use VIA on your keyboard, you can skip all the steps related to building your own firmware and flash a pre-compiled VIA-compatible firmware.
 ### 8.1. Download the pre-compiled firmware archive from the most recent run from [here](https://github.com/SonixQMK/qmk_firmware/actions?query=branch%3Asn32+event%3Apush)
+> [!IMPORTANT]  
+> The branch that is linked here has no current downloads, and the most recent runs are not approved yet. For now, you will have to compile an image yourself.
+
+
+
 ### 8.1. Find and extract the appropriate firmware for your keyboard from the archive (e.g. "keychron_k6_rgb_via_ansi.bin")
 ### 8.2. Get the appropriate json from the [keymaps directory](https://github.com/SonixQMK/qmk_firmware/tree/sn32/keyboards/keychron/k6/keymaps)
 ### 8.3. Follow steps 4 through 6 using the .bin file you extracted
